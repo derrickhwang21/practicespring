@@ -1,7 +1,16 @@
 package com.hwang.practicespring;
 
+//import org.springframework.data.annotation.Id;
+import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+@Entity
 public class Album {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
     public String title;
     public int songCount;
