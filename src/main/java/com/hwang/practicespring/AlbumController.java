@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class AlbumController {
@@ -22,5 +23,12 @@ public class AlbumController {
 
         m.addAttribute("albums", albumRepo.findAll());
         return "albumIndex";
+    }
+
+    @RequestMapping(value="/albums", method=RequestMethod.POST)
+    public RedirectView create(Model m){
+        Album newAlbum = new Album("Abbey Road", 10, 2843);
+        albumRepo.save(newAlbum);
+        return new RedirectView("/albums");
     }
 }
