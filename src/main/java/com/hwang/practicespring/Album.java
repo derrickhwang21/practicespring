@@ -1,6 +1,5 @@
 package com.hwang.practicespring;
 
-//import org.springframework.data.annotation.Id;
 import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,6 +25,6 @@ public class Album {
     public Album() {}
 
     public String toString(){
-        return title + " has this many " + songCount + " for this long" + songLength;
+        return title + " has this many " + songCount + " for this long " + songLength;
     }
 }
