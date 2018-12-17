@@ -1,9 +1,7 @@
 package com.hwang.practicespring;
 
-import javax.persistence.Id;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Album {
@@ -15,11 +13,17 @@ public class Album {
     public int songCount;
     public int songLength;
     public String imageUrl;
+    public String artist;
 
-    public Album(String title, int songCount, int songLength){
+    @OneToMany(mappedBy="album")
+    public List<Song> songs;
+
+    public Album(String title, String artist, int songCount, int songLength, String imageUrl){
         this. title = title;
         this.songCount = songCount;
         this.songLength = songLength;
+        this.artist =  artist;
+        this.imageUrl = imageUrl;
     }
 
     public Album() {}
