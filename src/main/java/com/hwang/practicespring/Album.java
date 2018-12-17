@@ -29,6 +29,6 @@ public class Album {
     public Album() {}
 
     public String toString(){
-        return title + " has this many " + songCount + " for this long " + songLength;
+        return title;
     }
 }
