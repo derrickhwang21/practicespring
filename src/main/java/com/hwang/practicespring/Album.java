@@ -1,12 +1,14 @@
 package com.hwang.practicespring;
 
-import javax.persistence.Id;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
+import java.util.List;
 
+/**
+ * Album model
+ */
 @Entity
 public class Album {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,16 +17,28 @@ public class Album {
     public int songCount;
     public int songLength;
     public String imageUrl;
+    public String artist;
 
-    public Album(String title, int songCount, int songLength){
+    @OneToMany(mappedBy="album")
+    public List<Song> songs;
+
+    /**
+     * constructor for Album model
+     */
+    public Album(String title, String artist, int songCount, int songLength, String imageUrl){
         this. title = title;
         this.songCount = songCount;
         this.songLength = songLength;
+        this.artist =  artist;
+        this.imageUrl = imageUrl;
     }
 
+    /**
+     * Default Constructor
+     */
     public Album() {}
 
     public String toString(){
-        return title + " has this many " + songCount + " for this long " + songLength;
+        return title;
     }
 }
