@@ -18,17 +18,18 @@ public class AlbumController {
     @Autowired
     private SongRepository songRepo;
 
-    @RequestMapping(value = "/albums", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model m){
-//        Album[] albums = new Album[]{
-//                new Album("Abbey Road", 10, 2843),
-//                new Album("Thriller", 7, 2539)
-//        };
-
-
         m.addAttribute("albums", albumRepo.findAll());
         return "albumIndex";
     }
+
+    @RequestMapping(value="/albums/{albumId}/show", method=RequestMethod.GET)
+    public String show(@PathVariable long albumId, Model m) {
+        m.addAttribute("album", albumRepo.findById(albumId).get());
+        return "showAlbum";
+    }
+
 
     @RequestMapping(value="/albums", method=RequestMethod.POST)
     public RedirectView create(@RequestParam String title,
@@ -38,14 +39,9 @@ public class AlbumController {
                                @RequestParam String imageUrl){
         Album newAlbum = new Album(title, artist, songCount, length, imageUrl);
         albumRepo.save(newAlbum);
-        return new RedirectView("/albums");
+        return new RedirectView("/");
     }
 
-    @RequestMapping(value="/albums/{albumId}/show", method=RequestMethod.GET)
-    public String show(@PathVariable long albumId, Model m) {
-        m.addAttribute("album", albumRepo.findById(albumId).get());
-        return "showAlbum";
-    }
 
     @RequestMapping(value="/albums/{albumId}/songs", method= RequestMethod.POST)
     public RedirectView addSong(@PathVariable long albumId,
@@ -56,6 +52,8 @@ public class AlbumController {
         Song newSong = new Song(title, length, trackNumber);
         newSong.album = albumRepo.findById(albumId).get();
         songRepo.save(newSong);
-        return new RedirectView("/albums");
+        return new RedirectView("/");
     }
+
+
 }
