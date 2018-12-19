@@ -16,6 +16,12 @@ Creating an `Album` model which has:
 
 Allowing users to see and add albums to the site
 
+#### lab 13
+
+Creating a Song model which has:
+* `title`, `length`, `trackNumber`, `album`
+
+Creating Spring integration testing
 
 ## Class Description
 
@@ -23,6 +29,8 @@ Allowing users to see and add albums to the site
 2. CapitalizeController.java - route that capitalizes the string after whatever is inputted after `/capitalize/`
 3. Album.java - model entity class for Album class
 4. AlbumContoller.java - route controller for model Album
+5. Song.java - model entity class for Song Class
+6. SongController.java - route controller for model Song
 
 ## Setting Up
 * clone repository
@@ -40,6 +48,7 @@ Allowing users to see and add albums to the site
     * Connect to `album_app` database
 * Run `PracticeSpringApplication`
 * Go to localhost: 8080 from a browser to view client side server
+* **Prior to building and running Spring application be sure to uncomment `spring.jpa.hibernate.ddl-auto=create` within the application.properties to initialize table schema. After initializing once, be sure to comment back in or delete to avoid dropping existing table.**
 
 
 

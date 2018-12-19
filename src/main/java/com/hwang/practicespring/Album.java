@@ -3,8 +3,12 @@ package com.hwang.practicespring;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Album model
+ */
 @Entity
 public class Album {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +22,9 @@ public class Album {
     @OneToMany(mappedBy="album")
     public List<Song> songs;
 
+    /**
+     * constructor for Album model
+     */
     public Album(String title, String artist, int songCount, int songLength, String imageUrl){
         this. title = title;
         this.songCount = songCount;
@@ -26,6 +33,9 @@ public class Album {
         this.imageUrl = imageUrl;
     }
 
+    /**
+     * Default Constructor
+     */
     public Album() {}
 
     public String toString(){

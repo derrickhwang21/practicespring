@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
 
+/**
+ * Controller for album
+ */
 @Controller
 public class AlbumController {
     @Autowired
